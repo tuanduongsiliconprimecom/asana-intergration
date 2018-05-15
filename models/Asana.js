@@ -9,12 +9,14 @@ const schema = new Schema(
     externalId: { //from slack
       type: String,
       required: true,
-      unique: true
+      unique: true,
+      sparse: true
     },
     uid: { // from asana
       type: String,
       required: true,
-      unique: true
+      unique: true,
+      sparse: true
     },
     accessToken: {
       type: String,
