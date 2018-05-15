@@ -6,8 +6,8 @@ module.exports = {
     };
     return Promise.resolve();
   },
-  getAuthUrl() {
-    return `https://app.asana.com/-/oauth_authorize?client_id=${process.env.ASANA_CLIENT_ID}&redirect_uri=${process.env.ASANA_REDIRECT_URI}&response_type=code`;
+  getAuthUrl(options) {
+    return `https://app.asana.com/-/oauth_authorize?client_id=${process.env.ASANA_CLIENT_ID}&redirect_uri=${encodeURIComponent(process.env.ASANA_REDIRECT_URI)}&response_type=code&state=${options.externalId}`;
   },
   getAccessToken(options) {
     const form = {

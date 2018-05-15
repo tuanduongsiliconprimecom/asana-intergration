@@ -6,7 +6,12 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema(
   {
-    UID: {
+    externalId: { //from slack
+      type: String,
+      required: true,
+      unique: true
+    },
+    uid: { // from asana
       type: String,
       required: true,
       unique: true

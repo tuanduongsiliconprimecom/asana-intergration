@@ -7,8 +7,7 @@ var logger = require('morgan');
 require('dotenv').config({ silent: true });
 require('./lib/mongoose')(app);
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var oauthRouter = require('./routes/oauth');
+var apiRouter = require('./controllers/api/index');
 const nconf = require('nconf');
 global.nconf = nconf;
 global.Constants = require('./constants');
@@ -29,8 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/oauth', oauthRouter);
+app.use('/v1/api/', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
